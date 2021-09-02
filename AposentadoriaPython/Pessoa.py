@@ -16,6 +16,7 @@ dtNivel = ''
 tempoOab = 0
 tempoInss = 0
 tempoOutroPublico = 0
+dtPriEmprego = ''
 
 #Entradas
 nome = input('Nome: ')
@@ -28,6 +29,7 @@ dtNivel = input('Data Nível (dd/mm/aaaa): ')
 tempoOab = int(input('Tempo de OAB (em dias): '))
 tempoInss = int(input('Tempo de INSS (em dias): '))
 tempoOutroPublico = int(input('Tempo de Outros Órgãos (em dias): '))
+dtPriEmprego = input('Data do 1º Emprego (dd/mm/aaaa): ')
 dtFechamento = input('Fechamento da contagem (dd/mm/aaaa): ')
 
 #Aplicando as fórmulas auxiliares
@@ -36,6 +38,7 @@ dtExercFormat = textoParaData(dtExercicio)
 if (dtNivel != ''):
   dtNivelFormat = textoParaData(dtNivel)
 dtFechFormat = textoParaData(dtFechamento)
+dtPriEmpFormat = textoParaData(dtPriEmprego)
 
 idade = calcIdade(dtNascFormat)
 cincoAnos = cincoAnosExercicio(dtExercFormat)
@@ -55,11 +58,12 @@ def regras():
   regraPermanente(sexo,idade,totalContribuicao,tempoEfetivo,tempoNoCargo)
   transicao1(sexo,idade,dtExercFormat,totalContribuicao,tempoEfetivo,tempoNoCargo)
   transicao2(sexo,idade,dtExercFormat,totalContribuicao,tempoEfetivo,tempoNoCargo)
-  transicao3(sexo,idade,dtExercFormat,totalContribuicao,tempoEfetivo,tempoNoCargo)
-  transicao4(sexo,idade,dtExercFormat,totalContribuicao,tempoEfetivo,tempoNoCargo)
+  transicao3(sexo,idade,dtExercFormat,totalContribuicao,tempoEfetivo,tempoNoCargo,dtPriEmpFormat)
+  transicao4(sexo,idade,dtExercFormat,totalContribuicao,tempoEfetivo,tempoNoCargo,dtPriEmpFormat)
 
 #Saídas
 print('---------------------------------------')
 print(nome.upper())
-
 regras()
+print('---------------------------------------')
+print(f"Tempo de contribuição: {round(anosContribuicao,0)} anos")

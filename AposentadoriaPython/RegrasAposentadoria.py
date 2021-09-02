@@ -87,7 +87,7 @@ def transicao2(sexo,idade,admissao,contribuicao,tpEfetivo,tpCargo):
 
 #A Transição 3 tem como parâmetro o pedágio de 100% do tempo que faltava até 07/03/2020
 #Deve verificar se a data de admissão for até 31/12/2003 para garantir integralidade e paridade
-def transicao3(sexo,idade,admissao,contribuicao,tpEfetivo,tpCargo):
+def transicao3(sexo,idade,admissao,contribuicao,tpEfetivo,tpCargo,primeiroEmprego):
     dtTransicao3 = datetime.strptime('31/12/2003', '%d/%m/%Y')    
     if (sexo.upper() == 'F'):        
         if( idade >=57 and contribuicao >=10950 and tpEfetivo >=7300 and tpCargo >=1825 and admissao <= dtTransicao3):
@@ -96,7 +96,7 @@ def transicao3(sexo,idade,admissao,contribuicao,tpEfetivo,tpCargo):
             print('---------------------------------------')
         else: 
             print('Não completou os requisitos para aposentadoria na Regra de Transição 3')
-            calcPedagio(admissao, sexo)
+            calcPedagio(primeiroEmprego, sexo)
             print('---------------------------------------')
             completou = False
     elif (sexo.upper() == 'M'):        
@@ -106,7 +106,7 @@ def transicao3(sexo,idade,admissao,contribuicao,tpEfetivo,tpCargo):
             print('---------------------------------------')
         else: 
             print('Não completou os requisitos para aposentadoria na Regra de Transição 3')
-            calcPedagio(admissao, sexo)
+            calcPedagio(primeiroEmprego, sexo)
             print('---------------------------------------')
             completou = False            
     else: 
@@ -116,7 +116,7 @@ def transicao3(sexo,idade,admissao,contribuicao,tpEfetivo,tpCargo):
 
 #A Transição 4 tem como parâmetro o pedágio de 100% do tempo que faltava até 07/03/2020
 #Deve verificar se a data de admissão for até 07/03/2020 para garantir 100% da média dos salários
-def transicao4(sexo,idade,admissao,contribuicao,tpEfetivo,tpCargo):
+def transicao4(sexo,idade,admissao,contribuicao,tpEfetivo,tpCargo,primeiroEmprego):
     dtTransicao4 = datetime.strptime('07/03/2020', '%d/%m/%Y')    
     if (sexo.upper() == 'F'):        
         if( idade >=57 and contribuicao >=10950 and tpEfetivo >=7300 and tpCargo >=1825 and admissao <= dtTransicao4):
@@ -125,7 +125,7 @@ def transicao4(sexo,idade,admissao,contribuicao,tpEfetivo,tpCargo):
             print('---------------------------------------')
         else: 
             print('Não completou os requisitos para aposentadoria na Regra de Transição 4')
-            calcPedagio(admissao, sexo)
+            calcPedagio(primeiroEmprego, sexo)
             print('---------------------------------------')
             completou = False            
     elif (sexo.upper() == 'M'):        
@@ -135,7 +135,7 @@ def transicao4(sexo,idade,admissao,contribuicao,tpEfetivo,tpCargo):
             print('---------------------------------------')
         else: 
             print('Não completou os requisitos para aposentadoria na Regra de Transição 4')
-            calcPedagio(admissao, sexo)
+            calcPedagio(primeiroEmprego, sexo)
             print('---------------------------------------')
             completou = False            
     else: 

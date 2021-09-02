@@ -48,10 +48,10 @@ def tempoCargo(inicio,fim,cargo,oab,outro):
 #----------------------------------------------------
 
 #Função para cálculo de pedágio de Contribuição
-def calcPedagio(admissao,sexo):    
+def calcPedagio(primeiroEmprego,sexo):    
     fimConta = datetime.strptime('07/03/2020', '%d/%m/%Y')
     dtPedagio = ''    
-    tPedagio = abs((fimConta - admissao).days)+1
+    tPedagio = abs((fimConta - primeiroEmprego).days)+1
     faltaPedagio = 0
     if (sexo.upper() == "F"):
         if (tPedagio >=10950):
@@ -60,9 +60,9 @@ def calcPedagio(admissao,sexo):
         else:
             #dtPedagio = admissao + timedelta(days=10950)
             faltaPedagio = 10950 - tPedagio - 1
-            dtPedagio = admissao + timedelta(days=10950) + timedelta(days=faltaPedagio)
+            dtPedagio = primeiroEmprego + timedelta(days=10950) + timedelta(days=faltaPedagio)
             #return print(datetime.strptime(dtPedagio,'%d/%m/%Y'))
-            return print('Completará o pedágio em: ' + datetime.strftime(dtPedagio, '%m/%d/%Y'))
+            return print('Completará o pedágio em: ' + datetime.strftime(dtPedagio, '%d/%m/%Y'))
     elif (sexo.upper() == "M"):
         if (tPedagio >=12775):
             print('Não há pedágio a ser pago.')
@@ -70,8 +70,8 @@ def calcPedagio(admissao,sexo):
         else:
             # dtPedagio = admissao + timedelta(days=12775)
             faltaPedagio = 12775 - tPedagio - 1
-            dtPedagio = admissao + timedelta(days=12775) + timedelta(days=faltaPedagio)
-            return print('Completará o pedágio em: ' + datetime.strftime(dtPedagio, '%m/%d/%Y'))
+            dtPedagio = primeiroEmprego + timedelta(days=12775) + timedelta(days=faltaPedagio)
+            return print('Completará o pedágio em: ' + datetime.strftime(dtPedagio, '%d/%m/%Y'))
             #STRFTIME pega um datetime e printa em STRING no formato desejado
     else:
         print('Dados inválidos')
